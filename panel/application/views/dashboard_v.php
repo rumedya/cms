@@ -29,11 +29,6 @@
 </main>
 <!--========== END app main -->
 
-
-
-    <!-- APP CUSTOMIZER -->
-    <!-- SIDE PANEL -->
-    <?php $this->load->view("includes/right-aside");?>
     <?php $this->load->view("includes/include_script")?>
 </body>
 </html>
