@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <h4 class="m-b-lg">
             Ürün Listesi
-            <a href="#" type="button" class="btn pull-right btn-primary btn-xs btn-outline"><i class="fa fa-plus"></i> Yeni Ekle</a>
+            <a href="<?php echo base_url("product/new_form"); ?>" type="button" class="btn pull-right btn-primary btn-xs btn-outline"><i class="fa fa-plus"></i> Yeni Ekle</a>
         </h4>
 
     </div><!-- END column -->
@@ -11,7 +11,7 @@
             <?php if(empty($items)){?>
                 <div class="alert">
                     <div class="alert alert-info alert-dismissible text-center">
-                        <p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="#">tıklayınız.</a></p>
+                        <p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="<?php echo base_url("product/new_form"); ?>">tıklayınız.</a></p>
                     </div>
                 </div>
             <?php }else{ ?>
