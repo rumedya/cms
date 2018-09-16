@@ -61,8 +61,14 @@ class Product extends CI_CONTROLLER{
         if($validate){
             echo "Kayıt işlemleri başlar...";
         }else{
-            echo validation_errors();
-        }
+            $viewData                   = new stdClass();
+
+            /** View'e gönderilecek değişkenlerin set edilmesi */
+            $viewData->viewFolder       = $this->viewFolder;
+            $viewData->subViewFolder    = "add";
+            $viewData->form_error       = true;
+
+            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);        }
         //başarılı ise kayıt işlemi başlar
             //kayıt işlemi başlar
         //başarısız ise
