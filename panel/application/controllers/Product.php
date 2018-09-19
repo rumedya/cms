@@ -74,10 +74,11 @@ class Product extends CI_CONTROLLER{
                     "createdAt"     =>  date("Y-m-d H:i:s")
                 )
             );
+            //TODO ALERT SİSTEMİ EKLENECEK
             if($insert){
-                echo "kayıt işlemi başarılıdır...";
+                redirect(base_url("product"));
             }else{
-                echo "işlem başarısızdır.";
+                redirect(base_url("product"));
             }
 
         }else{
