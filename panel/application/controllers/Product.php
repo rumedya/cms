@@ -118,6 +118,73 @@ class Product extends CI_CONTROLLER{
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
     }
+    public function update($id){
+
+        $this->load->library("form_validation");
+
+        //kurallar yazılır...
+        $this->form_validation->set_rules("title","Başlık","required|trim");
+
+        $this->form_validation->set_message(
+            array(
+                "required"  => "{field} alanı doldurulmalıdır."
+            )
+        );
+
+        //form valitadion çalıştırılır
+
+        //TRUE - FALSE
+        $validate = $this->form_validation->run();
+
+        //Monitör Askısı
+        //monitor-askisi
+
+
+        if($validate){
+
+            $update = $this->product_model->update(
+                array(
+                    "id"            =>  $id
+                ),
+                array(
+                    "title"         =>  $this->input->post("title"),
+                    "description"   =>  $this->input->post("description"),
+                    "url"           =>  convertToSEO($this->input->post("title")),
+                )
+            );
+            //TODO ALERT SİSTEMİ EKLENECEK
+            if($update){
+                redirect(base_url("product"));
+            }else{
+                redirect(base_url("product"));
+            }
+
+        }else{
+            $viewData                   = new stdClass();
+
+            /**Tablodan Verilerin Getirilmesi*/
+            $item = $this->product_model->get(
+                array(
+                    "id"        => $id,
+                )
+            );
+
+            /** View'e gönderilecek değişkenlerin set edilmesi */
+            $viewData->viewFolder       = $this->viewFolder;
+            $viewData->subViewFolder    = "update";
+            $viewData->form_error       = true;
+            $viewData->item             = $item;
+
+
+
+
+            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);        }
+        //başarılı ise kayıt işlemi başlar
+        //kayıt işlemi başlar
+        //başarısız ise
+        //hata ekranda gösterilir...
+    }
+
 
 
 }
