@@ -41,5 +41,11 @@ $(document).ready(function(){
 
     });
 
+    var uploadSection = Dropzone.forElement("#dropzone");
+
+    uploadSection.on("complete", function(){
+        alert();
+    });
+
 
 });
