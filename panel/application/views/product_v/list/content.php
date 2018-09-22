@@ -44,16 +44,18 @@
                                 type="checkbox"
                                 data-switchery
                                 data-color="#10c469"
+                                data-size="small"
                                 <?php echo ($item->isActive) ? "checked" : ""; ?>
                         />
                     </td>
                     <td>
                         <button
                                 data-url="<?php echo base_url("product/delete/$item->id"); ?>" type="button"
-                                class="btn btn-danger btn-sm btn-outline remove-btn">
+                                class="btn btn-danger btn-xs btn-outline remove-btn">
                                 <i class="fa fa-trash"></i> Sil
                         </button>
-                        <a href="<?php echo base_url("product/update_form/$item->id"); ?>" type="button" class="btn btn-info btn-sm btn-outline"><i class="fa fa-pencil"></i> Düzenle</a>
+                        <a href="<?php echo base_url("product/update_form/$item->id"); ?>" type="button" class="btn btn-info btn-xs btn-outline"><i class="fa fa-pencil"></i> Düzenle</a>
+                        <a href="<?php echo base_url("product/image_form/$item->id"); ?>" type="button" class="btn btn-dark btn-xs btn-outline"><i class="fa fa-image"></i> Resimler</a>
                     </td>
                 </tr>
 
