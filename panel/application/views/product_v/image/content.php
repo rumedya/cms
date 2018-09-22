@@ -17,13 +17,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-        <h4 class="m-b-lg">
-            <b><?php echo $item->title; ?></b> kaydına ait resimler.
-            <a href="#" type="button" class="btn pull-right btn-primary btn-xs btn-outline"><i class="fa fa-plus"></i> Yeni Ekle</a>
-        </h4>
 
-    </div><!-- END column -->
     <div class="col-md-12">
         <div class="widget">
 
