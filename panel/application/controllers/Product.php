@@ -11,6 +11,9 @@ class Product extends CI_CONTROLLER{
 
         $this->load->model("product_model");
 
+        $this->load->model("product_image_model");
+
+
     }
     public function index(){
         $viewData = new stdClass();
@@ -256,15 +259,31 @@ class Product extends CI_CONTROLLER{
 
     }
 
-    public function image_upload(){
+    public function image_upload($id){
 
-        $config["allowed_types"]    = "jpg|jpeg|png";
+        $config["allowed_types"]    = "png|jpg";
         $config["upload_path"]      = "uploads/$this->viewFolder/";
+
         $this->load->library("upload", $config);
 
         $upload = $this->upload->do_upload("file");
 
-        if($upload){echo "işlem başarılı";}else{echo "işlem başarısız";}
+        if($upload){
+
+            $uploaded_file = $this->upload->data("file_name");
+
+            $this->product_image_model->add(
+              array(
+                  "img_url"         => $uploaded_file,
+                  "rank"            => 0,
+                  "isActive"        => 1,
+                  "isCover"         => 0,
+                  "createdAt"       => date("Y-m-d H:i:s"),
+                  "product_id"      => $id
+              )
+            );
+
+        }else{echo "işlem başarısız";}
 
 
     }
