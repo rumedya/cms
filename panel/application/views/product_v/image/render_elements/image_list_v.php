@@ -34,13 +34,13 @@
                 </td>
                 <td class="w100 text-center">
                     <input
-                        data-url="<?php echo base_url("product/isActiveSetter/"); ?>"
-                        class="isActive"
+                        data-url="<?php echo base_url("product/isCoverSetter/$image->id/$image->product_id"); ?>"
+                        class="isCover"
                         type="checkbox"
                         data-switchery
                         data-color="#ff5b5b"
                         data-size="small"
-                        <?php echo ($image->isActive) ? "checked" : ""; ?>
+                        <?php echo ($image->isCover) ? "checked" : ""; ?>
                     />
                 </td>
                 <td class="w100 text-center">
