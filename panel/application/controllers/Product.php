@@ -270,7 +270,7 @@ class Product extends CI_CONTROLLER{
             $viewData->item_images      = $this->product_image_model->get_all(
                 array(
                     "product_id"    => $parent_id
-                )
+                ), "rank ASC"
             );
             $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData, true);
 
@@ -302,6 +302,31 @@ class Product extends CI_CONTROLLER{
 
 
     }
+    public function imageRankSetter(){
+        $data = $this->input->post("data");
+        parse_str($data,$order);
+        $items = $order["ord"];
+        print_r($items);
+
+        foreach ($items as $rank => $id){
+
+            $this->product_image_model->update(
+
+                array(
+                    "id"        => $id,
+                    "rank !="   => $rank
+                ),
+                array(
+                    "rank"  => $rank
+                )
+
+            );
+
+
+        }
+
+
+    }
     public function image_form($id){
         $viewData                   = new stdClass();
 
@@ -317,9 +342,8 @@ class Product extends CI_CONTROLLER{
 
         $viewData->item_images = $this->product_image_model->get_all(
 
-            array(
-                "product_id"    => $id
-            )
+            array("product_id"    => $id), "rank ASC"
+
         );
 
 
@@ -368,10 +392,10 @@ class Product extends CI_CONTROLLER{
         $viewData->subViewFolder    = "image";
 
         $viewData->item_images      = $this->product_image_model->get_all(
-            array(
-                "product_id"    => $id
-            )
+
+            array("product_id"    => $id), "rank ASC"
         );
+
         $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData, true);
 
         echo $render_html;
