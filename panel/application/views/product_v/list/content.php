@@ -16,7 +16,7 @@
                 </div>
             <?php }else{ ?>
 
-            <table class="table table-hover table-striped content-container">
+            <table class="table table-hover table-striped table-bordered content-container">
                 <thead>
                     <th><i class="fa fa-reorder"></i></th>
                     <th>#id</th>
@@ -32,12 +32,12 @@
                 <?php foreach ($items as $item){?>
 
                 <tr id="ord-<?php echo $item->id; ?>">
-                    <td><i class="fa fa-reorder"></i></td>
-                    <td>#<?php echo $item->id; ?></td>
+                    <td class="order w50"><i class="fa fa-reorder"></i></td>
+                    <td class="order w50">#<?php echo $item->id; ?></td>
                     <td><?php echo $item->title; ?></td>
                     <td><?php echo $item->url; ?></td>
                     <td><?php echo $item->description; ?></td>
-                    <td>
+                    <td class="order w60">
                         <input
                                 data-url="<?php echo base_url("product/isActiveSetter/$item->id"); ?>"
                                 class="isActive"
@@ -48,7 +48,7 @@
                                 <?php echo ($item->isActive) ? "checked" : ""; ?>
                         />
                     </td>
-                    <td>
+                    <td class="w220">
                         <button
                                 data-url="<?php echo base_url("product/delete/$item->id"); ?>" type="button"
                                 class="btn btn-danger btn-xs btn-outline remove-btn">
