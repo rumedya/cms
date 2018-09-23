@@ -81,10 +81,21 @@ class Product extends CI_CONTROLLER{
             );
             //TODO ALERT SİSTEMİ EKLENECEK
             if($insert){
-                redirect(base_url("product"));
+                $alert = array(
+                    "title"     =>  "İşlem Başarılı.",
+                    "text"      =>  "Kayıt başarılı bir şekilde eklendi.",
+                    "type"      =>  "success"
+                );
             }else{
-                redirect(base_url("product"));
+                $alert = array(
+                    "title"     =>  "İşlem Başarısız.",
+                    "text"      =>  "Kayıt ekleme sırasında problem oluştu.",
+                    "type"      =>  "error"
+                );
             }
+            //İşlemin sonucunu Session'a yazma işlemi...
+            $this->session->set_flashdata("alert", $alert);
+            redirect(base_url("product"));
 
         }else{
             $viewData                   = new stdClass();
@@ -95,10 +106,6 @@ class Product extends CI_CONTROLLER{
             $viewData->form_error       = true;
 
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);        }
-        //başarılı ise kayıt işlemi başlar
-            //kayıt işlemi başlar
-        //başarısız ise
-            //hata ekranda gösterilir...
     }
     public function update_form($id){
 
@@ -159,10 +166,20 @@ class Product extends CI_CONTROLLER{
             );
             //TODO ALERT SİSTEMİ EKLENECEK
             if($update){
-                redirect(base_url("product"));
+                $alert = array(
+                    "title"     =>  "İşlem Başarılı.",
+                    "text"      =>  "Güncelleme işlemi başarılıdır.",
+                    "type"      =>  "success"
+                );
             }else{
-                redirect(base_url("product"));
+                $alert = array(
+                    "title"     =>  "İşlem Başarısız.",
+                    "text"      =>  "Güncelleme sırasında problem oluştu.",
+                    "type"      =>  "error"
+                );
             }
+            $this->session->set_flashdata("alert", $alert);
+            redirect(base_url("product"));
 
         }else{
             $viewData                   = new stdClass();
@@ -197,10 +214,20 @@ class Product extends CI_CONTROLLER{
         );
         //TODO Alert Sistemi Eklenecek...
         if($delete){
-            redirect(base_url("product"));
+            $alert = array(
+                "title"     =>  "İşlem Başarılı.",
+                "text"      =>  "Kayıt başarılı bir şekilde silindi.",
+                "type"      =>  "success"
+            );
         }else{
-            redirect(base_url("product"));
+            $alert = array(
+                "title"     =>  "İşlem Başarısız.",
+                "text"      =>  "Kayıt silme sırasında problem oluştu.",
+                "type"      =>  "error"
+            );
         }
+        $this->session->set_flashdata("alert", $alert);
+        redirect(base_url("product"));
     }
     public function imageDelete($id, $parent_id){
 
@@ -422,6 +449,7 @@ class Product extends CI_CONTROLLER{
         echo $render_html;
 
     }
+
 
 
 }
