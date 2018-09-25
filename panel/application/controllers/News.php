@@ -12,8 +12,6 @@ class News extends CI_CONTROLLER{
         $this->load->model("news_model");
 
         $this->load->model("product_image_model");
-
-
     }
     public function index(){
         $viewData = new stdClass();
@@ -49,7 +47,28 @@ class News extends CI_CONTROLLER{
 
         $this->load->library("form_validation");
 
-        //kurallar yazılır...
+        //Kurallar yazılır...
+
+        $news_type = $this->input->post("news_type");
+
+        if($news_type == "image"){
+
+            if($_FILES["img_url"]["name"] == ""){
+                $alert = array(
+                    "title"     =>  "İşlem Başarısız.",
+                    "text"      =>  "Lütfen bir görsel seçiniz.",
+                    "type"      =>  "error"
+                );
+                //İşlemin sonucunu Session'a yazma işlemi...
+                $this->session->set_flashdata("alert", $alert);
+                redirect(base_url("news/new_form"));
+                die();
+            }
+        }
+        elseif($news_type == "video"){
+
+        }
+
         $this->form_validation->set_rules("title","Başlık","required|trim");
 
         $this->form_validation->set_message(
