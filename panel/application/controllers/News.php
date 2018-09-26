@@ -119,11 +119,6 @@ class News extends CI_CONTROLLER{
                         "createdAt"     =>  date("Y-m-d H:i:s")
                     );
 
-
-
-
-
-
                 }
                 else{
 
@@ -139,7 +134,6 @@ class News extends CI_CONTROLLER{
 
 
                 }
-
 
             }
             else if($news_type == "video"){
