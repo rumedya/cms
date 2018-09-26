@@ -65,7 +65,10 @@ class News extends CI_CONTROLLER{
                 die();
             }
         }
-        elseif($news_type == "video"){
+        else if($news_type == "video"){
+
+            $this->form_validation->set_rules("video_url","Video URL","required|trim");
+
 
         }
 
@@ -87,6 +90,10 @@ class News extends CI_CONTROLLER{
 
 
         if($validate){
+
+            echo "kayıt işlemleri başlasın";
+
+            die();
 
             $insert = $this->news_model->add(
                 array(
@@ -123,6 +130,7 @@ class News extends CI_CONTROLLER{
             $viewData->viewFolder       = $this->viewFolder;
             $viewData->subViewFolder    = "add";
             $viewData->form_error       = true;
+            $viewData->news_type        = $news_type;
 
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);        }
     }
