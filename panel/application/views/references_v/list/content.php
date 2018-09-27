@@ -39,9 +39,9 @@
                     <td><?php echo $item->url; ?></td>
                     <td><?php echo $item->description; ?></td>
                     <td>
-<!--                        <img width="150"-->
-<!--                             src="--><?php //echo base_url("uploads/$viewFolder/$item->img_url"); ?><!--"-->
-<!--                             alt="" class="img-rounded">-->
+                        <img width="150"
+                             src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?>"
+                             alt="" class="img-rounded">
                     </td>
                     <td class="order w60">
                         <input
