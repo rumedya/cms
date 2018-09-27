@@ -102,7 +102,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)">
+                    <a href="<?php echo base_url("references");?>">
                         <i class="menu-icon fa fa-check"></i>
                         <span class="menu-text">Referanslar</span>
                     </a>
